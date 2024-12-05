@@ -43,18 +43,12 @@ int	ft_putone(va_list one, char c)
 		return (ft_putstr(va_arg(one, char *)));
 	if (c == 'c')
 		return (ft_putchar(va_arg(one, int)));
-	if (c == 'd' || c == 'i')
+	if (c == 'd' || c == 'i' || c == 'u')
 		return (ft_nbr(va_arg(one, int)));
-	if (c == 'u')
-		return (ft_unint(va_arg(one, unsigned int)));
 	if (c == '%')
 		return (ft_putchar('%'));
 	if (c == 'x' || c == 'X' || c == 'p')
 		return (ft_hexa(one, c));
 	else
-	{
-		i = ft_putchar('%');
-		i += ft_putchar(c);
-		return (i);
-	}
+		return (ft_putchar('%') + ft_putchar(c));
 }

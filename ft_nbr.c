@@ -12,30 +12,17 @@
 
 #include "libftprintf.h"
 
-static void	ft_putnbr(int n)
+int	ft_nbr(int n)
 {
+	unsigned long	i;
+
 	if (n == -2147483648)
-	{
-		ft_putstr("-2147483648");
-		return ;
-	}
+		return (ft_putstr("-2147483648"));
 	if (n < 0)
 	{
 		ft_putchar('-');
-		n *= -1;
+		i = n * -1;
+		return (ft_putnbr_base(i, "0123456789") + 1);
 	}
-	if (n > 9)
-		ft_putnbr(n / 10);
-	ft_putchar(n % 10 + '0');
-}
-
-int	ft_nbr(int n)
-{
-	ft_putnbr(n);
-	if (n < 0)
-	{
-		n *= -1;
-		return (ft_countnbr(n) + 1);
-	}
-	return (ft_countnbr(n));
+	return (ft_putnbr_base(n, "0123456789"));
 }
