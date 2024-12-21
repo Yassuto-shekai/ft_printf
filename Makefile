@@ -1,22 +1,22 @@
 NAME = libftprintf.a
 
 SRC = ft_countnbr.c ft_putadress.c ft_putone.c ft_unint.c ft_unint.c \
-      ft_putchar.c ft_putstr.c ft_printf.c ft_putnbr_base.c ft_strlen.c ft_nbr.c
+      ft_putchar.c ft_putstr.c ft_printf.c ft_putnbr_base.c ft_strlen.c ft_nbr.c ft_bonus.c
 
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	ar rsc $(NAME) $(OBJ)
+	@ar rsc $(NAME) $(OBJ)
 
 %.c : %.o
-	cc -Wall -Wextra -Werror -c $< -o $@
+	@cc -Wall -Wextra -Werror -c $< -o $@
 clean : 
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
 

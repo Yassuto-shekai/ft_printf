@@ -6,13 +6,13 @@
 /*   By: yel-mota <yel-mota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 10:28:28 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/11/18 14:31:29 by yel-mota         ###   ########.fr       */
+/*   Updated: 2024/12/21 10:17:53 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_countnbr(unsigned int n)
+int	ft_countnbr(unsigned long long n)
 {
 	int	i;
 

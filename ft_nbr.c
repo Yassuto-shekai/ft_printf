@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 10:06:58 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/11/18 16:58:31 by yel-mota         ###   ########.fr       */
+/*   Updated: 2024/12/14 16:23:46 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int	ft_nbr(int n)
 		i = n * -1;
 		return (ft_putnbr_base(i, "0123456789") + 1);
 	}
+	i = (unsigned long)n;
 	return (ft_putnbr_base(n, "0123456789"));
 }

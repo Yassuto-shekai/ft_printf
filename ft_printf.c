@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:43:25 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/11/18 14:52:59 by yel-mota         ###   ########.fr       */
+/*   Updated: 2024/12/21 10:50:13 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_printf(const char *str, ...)
 {
 	int	i;
 	int	cont;
+	int	j;
 
 	if (str == NULL)
 		return (-1);
@@ -27,8 +28,10 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			i++;
-			cont += ft_putone(one, str[i]);
+			j = ft_putone(one, str, &i);
+			if ((str[i] == '%' && str[i + 1] == '\0') || j == -1)
+				return (-1);
+			cont += j;
 		}
 		else
 			cont += ft_putchar(str[i]);

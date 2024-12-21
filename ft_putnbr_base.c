@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:37:01 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/11/18 17:12:48 by yel-mota         ###   ########.fr       */
+/*   Updated: 2024/12/21 10:54:24 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,17 @@ int	ft_putnbr_base(unsigned long nbr, char *base)
 {
 	int				i;
 	unsigned int	basel;
-	unsigned int	num;
 
 	i = 0;
-	num = nbr;
 	basel = ft_strlen(base);
-	if (num < basel)
+	if (nbr < basel)
 	{
-		i += ft_putchar(base[num]);
+		i += ft_putchar(base[nbr]);
 	}
 	else
 	{
-		i += ft_putnbr_base(num / basel, base);
-		i += ft_putnbr_base(num % basel, base);
+		i += ft_putnbr_base(nbr / basel, base);
+		i += ft_putnbr_base(nbr % basel, base);
 	}
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 20:16:52 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/11/18 17:28:17 by yel-mota         ###   ########.fr       */
+/*   Updated: 2024/12/21 10:22:02 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,23 @@ static int	ft_hexa(va_list one, char c)
 	return (i);
 }
 
-int	ft_putone(va_list one, char c)
+int	ft_putone(va_list one, const char *str, int *i)
 {
-	int	i;
-
-	if (c == 's')
+	(*i)++;
+	if (str[*i] == 's')
 		return (ft_putstr(va_arg(one, char *)));
-	if (c == 'c')
+	if (str[*i] == '#' || str[*i] == ' ' || str[*i] == '+')
+		return (ft_bonus_1(str, one, i));
+	if (str[*i] == 'c')
 		return (ft_putchar(va_arg(one, int)));
-	if (c == 'd' || c == 'i' || c == 'u')
+	if (str[*i] == 'd' || str[*i] == 'i')
 		return (ft_nbr(va_arg(one, int)));
-	if (c == '%')
+	if (str[*i] == '%')
 		return (ft_putchar('%'));
-	if (c == 'x' || c == 'X' || c == 'p')
-		return (ft_hexa(one, c));
+	if (str[*i] == 'x' || str[*i] == 'X' || str[*i] == 'p')
+		return (ft_hexa(one, str[*i]));
+	if (str[*i] == 'u')
+		return (ft_unint(va_arg(one, unsigned long long)));
 	else
-		return (ft_putchar('%') + ft_putchar(c));
+		return (ft_putchar('%') + ft_putchar(str[*i]));
 }
