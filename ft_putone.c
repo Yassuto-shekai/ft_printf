@@ -38,6 +38,8 @@ static int	ft_hexa(va_list one, char c)
 int	ft_putone(va_list one, const char *str, int *i)
 {
 	(*i)++;
+	if if (str[*i] == '\0')
+		return (-1); 
 	if (str[*i] == 's')
 		return (ft_putstr(va_arg(one, char *)));
 	if (str[*i] == '#' || str[*i] == ' ' || str[*i] == '+')
