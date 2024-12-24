@@ -29,7 +29,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			j = ft_putone(one, str, &i);
-			if ((str[i] == '%' && str[i + 1] == '\0') || j == -1)
+			if (j == -1)
 				return (-1);
 			cont += j;
 		}
