@@ -6,11 +6,11 @@
 /*   By: yel-mota <yel-mota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 02:14:18 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/11/18 14:45:01 by yel-mota         ###   ########.fr       */
+/*   Updated: 2024/12/29 14:32:01 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_strlen(const char *str)
 {

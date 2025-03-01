@@ -6,11 +6,11 @@
 /*   By: yel-mota <yel-mota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 20:16:52 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/12/21 10:22:02 by yel-mota         ###   ########.fr       */
+/*   Updated: 2024/12/29 14:23:13 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	ft_hexa(va_list one, char c)
 {
@@ -19,12 +19,12 @@ static int	ft_hexa(va_list one, char c)
 	i = 0;
 	if (c == 'x')
 	{
-		i = ft_putnbr_base(va_arg(one, unsigned long long), "0123456789abcdef");
+		i = ft_putnbr_base(va_arg(one, unsigned int), "0123456789abcdef");
 		return (i);
 	}
 	if (c == 'X')
 	{
-		i = ft_putnbr_base(va_arg(one, unsigned long long), "0123456789ABCDEF");
+		i = ft_putnbr_base(va_arg(one, unsigned int), "0123456789ABCDEF");
 		return (i);
 	}
 	if (c == 'p')
@@ -35,25 +35,22 @@ static int	ft_hexa(va_list one, char c)
 	return (i);
 }
 
-int	ft_putone(va_list one, const char *str, int *i)
+int	ft_putone(va_list one, const char str)
 {
-	(*i)++;
-	if if (str[*i] == '\0')
-		return (-1); 
-	if (str[*i] == 's')
+	if (str == '\0')
+		return (-1);
+	if (str == 's')
 		return (ft_putstr(va_arg(one, char *)));
-	if (str[*i] == '#' || str[*i] == ' ' || str[*i] == '+')
-		return (ft_bonus_1(str, one, i));
-	if (str[*i] == 'c')
+	if (str == 'c')
 		return (ft_putchar(va_arg(one, int)));
-	if (str[*i] == 'd' || str[*i] == 'i')
+	if (str == 'd' || str == 'i')
 		return (ft_nbr(va_arg(one, int)));
-	if (str[*i] == '%')
+	if (str == '%')
 		return (ft_putchar('%'));
-	if (str[*i] == 'x' || str[*i] == 'X' || str[*i] == 'p')
-		return (ft_hexa(one, str[*i]));
-	if (str[*i] == 'u')
-		return (ft_unint(va_arg(one, unsigned long long)));
+	if (str == 'x' || str == 'X' || str == 'p')
+		return (ft_hexa(one, str));
+	if (str == 'u')
+		return (ft_unint(va_arg(one, unsigned int)));
 	else
-		return (ft_putchar('%') + ft_putchar(str[*i]));
+		return (ft_putchar('%') + ft_putchar(str));
 }

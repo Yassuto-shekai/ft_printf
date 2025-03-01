@@ -6,11 +6,11 @@
 /*   By: yel-mota <yel-mota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:43:25 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/12/21 10:50:13 by yel-mota         ###   ########.fr       */
+/*   Updated: 2024/12/29 16:34:49 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printf(const char *str, ...)
 {
@@ -28,7 +28,7 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			j = ft_putone(one, str, &i);
+			j = ft_putone(one, str[++i]);
 			if (j == -1)
 				return (-1);
 			cont += j;

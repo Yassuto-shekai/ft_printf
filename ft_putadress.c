@@ -6,27 +6,29 @@
 /*   By: yel-mota <yel-mota@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 21:38:18 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/12/21 10:54:12 by yel-mota         ###   ########.fr       */
+/*   Updated: 2024/12/29 14:30:00 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-static int	ft_adress(unsigned long nbr, char *base)
+static int	ft_adress(unsigned long nbr)
 {
 	int				i;
+	char			*base;
 	unsigned int	basel;
 
 	i = 0;
-	basel = ft_strlen(base);
+	base = "0123456789abcdef";
+	basel = 16;
 	if (nbr < basel)
 	{
 		i += ft_putchar(base[nbr]);
 	}
 	else
 	{
-		i += ft_putnbr_base(nbr / basel, base);
-		i += ft_putnbr_base(nbr % basel, base);
+		i += ft_adress(nbr / basel);
+		i += ft_adress(nbr % basel);
 	}
 	return (i);
 }
@@ -39,6 +41,6 @@ int	ft_putaddress(void *p)
 		return (ft_putstr("(nil)"));
 	i = 0;
 	i += ft_putstr("0x");
-	i += ft_adress((unsigned long)p, "0123456789abcdef");
+	i += ft_adress((unsigned long)p);
 	return (i);
 }
